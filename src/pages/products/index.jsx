@@ -72,7 +72,7 @@ export default function Index() {
                   Price
                 </th>
                 <th scope="col" className="px-4 py-3">
-                  Description
+                  Recipe
                 </th>
                 <th scope="col" className="px-4 py-3">
                   <span className="sr-only">Actions</span>
@@ -89,7 +89,9 @@ export default function Index() {
                     {product.name}
                   </th>
                   <td className="px-4 py-3">{product.price}</td>
-                  <td className="px-4 py-3">{product.description}</td>
+                  <td className="max-w-xs px-4 py-3 truncate">
+                    {product.recipe}
+                  </td>
                   <td className="flex items-center justify-end px-4 py-3">
                     <Link
                       href={`/products/${product.id}/edit`}

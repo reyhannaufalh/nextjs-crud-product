@@ -10,24 +10,24 @@ export default function Create() {
     initialValues: {
       name: "",
       price: 0,
-      description: "",
+      recipe: "",
       image: "",
     },
     onSubmit: async () => {
-      const { name, price, description, image } = formik.values;
+      const { name, price, recipe, image } = formik.values;
 
       console.log(formik.values);
 
       createProduct({
         name,
         price: parseInt(price),
-        description,
+        recipe,
         image,
       });
 
       formik.setFieldValue("name", "");
       formik.setFieldValue("price", 0);
-      formik.setFieldValue("description", "");
+      formik.setFieldValue("recipe", "");
       formik.setFieldValue("image", "");
 
       router.push("/products");
@@ -90,17 +90,17 @@ export default function Create() {
 
         <div className="mb-5">
           <label
-            htmlFor="description"
+            htmlFor="recipe"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Description
+            Recipe
           </label>
           <input
             type="text"
             onChange={handleFormInput}
-            value={formik.values.description}
-            id="description"
-            name="description"
+            value={formik.values.recipe}
+            id="recipe"
+            name="recipe"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="name@flowbite.com"
             required
