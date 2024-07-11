@@ -4,9 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import placeholder from "../../public/images/placeholder.svg";
+import Create from "../components/CreateRecipeModal";
 
 export default function Home() {
-  const { data } = useFetchProducts({
+  const [createModal, setCreateModal] = useState(false);
+
+  const { data, refetch: refetchProducts } = useFetchProducts({
     onError: (error) => {
       console.log(error);
     },
@@ -29,9 +32,9 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar setCreateModal={setCreateModal} />
 
-      <main className="container mx-auto lg:mt-24">
+      <main className="container mx-auto mb-48 sm:mt-24">
         {/* Header */}
         <header className="flex flex-col items-center justify-center gap-6">
           <h1 className="text-4xl font-bold">Find your best recipe!</h1>
@@ -91,6 +94,7 @@ export default function Home() {
                     src={product.image}
                     alt="Product Image"
                     loader={imageLoader}
+                    unoptimized
                   />
                 </Link>
                 <div className="p-5">
@@ -135,6 +139,13 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {createModal && (
+        <Create
+          setCreateModal={setCreateModal}
+          refetchProducts={refetchProducts}
+        />
+      )}
     </>
   );
 }

@@ -1,8 +1,20 @@
+import { useAuth } from "@/context/AuthContext";
 import { useDeleteProduct, useFetchProducts } from "@/features/product";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Index() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+
   const {
     data,
     isLoading: productsIsLoading,
