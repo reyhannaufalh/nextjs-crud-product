@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { useFindProduct } from "@/features/product";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -15,6 +16,10 @@ export default function Index() {
     },
   });
 
+  function previousPage() {
+    router.back();
+  }
+
   return (
     <>
       <Navbar />
@@ -23,7 +28,13 @@ export default function Index() {
         <div className="flex justify-between max-w-screen-xl px-4 mx-auto ">
           <article className="w-full max-w-2xl mx-auto format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header className="mb-4 lg:mb-6 not-format">
-              <address className="flex items-center mb-6 not-italic">
+              <button
+                onClick={previousPage}
+                className=" btn text-neutral-900 bg-neutral-100"
+              >
+                Back to previous page
+              </button>
+              <address className="flex items-center my-6 not-italic">
                 <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                   <Image
                     width={100}

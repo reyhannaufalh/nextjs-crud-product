@@ -35,12 +35,12 @@ export const AuthProvider = ({ children }) => {
         password,
       });
       localStorage.setItem("token", data.token);
-      setUser(data.user); // Assuming the backend also returns user data
+      setUser(data.user);
       router.push("/");
     } catch (error) {
       console.error("Login failed:", error);
-      console.error("Response data:", error.response.data); // Log response data
-      console.error("Response status:", error.response.status); // Log response status
+      console.error("Response data:", error.response.data);
+      console.error("Response status:", error.response.status);
     }
   };
 

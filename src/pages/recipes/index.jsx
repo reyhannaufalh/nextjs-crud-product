@@ -3,10 +3,13 @@ import { useAuth } from "@/context/AuthContext";
 import { useFetchProducts } from "@/features/product";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 export default function Index() {
   const { user } = useAuth();
+  const [toggle, setToggle] = useState("products");
+  const router = useRouter();
 
   const { data: products, refetch: refetchProducts } = useFetchProducts({
     onError: (error) => {
@@ -88,10 +91,24 @@ export default function Index() {
 
         <div className="w-3/4 ">
           <div className="flex justify-center w-full gap-8 border-t border-primary-50">
-            <button className="px-4 py-3 border-t-2 border-primary-500">
+            <button
+              onClick={() => setToggle("products")}
+              className={
+                toggle == "products"
+                  ? "px-4 py-3 border-t-2 border-primary-500"
+                  : "px-4 py-2 rounded-md"
+              }
+            >
               POSTINGAN
             </button>
-            <button className="px-4 py-3 border-t-2 border-primary-500">
+            <button
+              onClick={() => setToggle("archive")}
+              className={
+                toggle == "archive"
+                  ? "px-4 py-3 border-t-2 border-primary-500"
+                  : "px-4 py-2 rounded-md"
+              }
+            >
               TERSIMPAN
             </button>
           </div>

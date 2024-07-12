@@ -1,40 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Culinary Recipe List Frontend
 
-## Getting Started
+This application is the frontend for the Culinary Recipe List, connected to the previously built backend using Express JS and Prisma. The frontend is built using Next.js and Tailwind CSS.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The Culinary Recipe List frontend provides an interface for users to manage and view culinary recipes. It includes a dashboard for product and category management, a main page for viewing all users' products, a search feature, and a "My Recipes" page for viewing and adding a user's own products. The system includes authentication using JWT.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Dashboard**: Interface for managing product and category data.
+- **Main Page**: View a list of products created by all users and search for products.
+- **My Recipes**: View a user's own products and add new products.
+- **Authentication**: Secure login and registration using JWT.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone this repository
+   ```bash
+   git clone https://github.com/reyhannaufalh/nextjs-culinary-recipes.git
+   ```
+2. Navigate to the project directory
+   ```bash
+   cd culinary-recipe-list-frontend
+   ```
+3. Install dependencies
+   ```bash
+   npm install
+   ```
+4. Configure the `.env` file according to your backend configuration
+   ```env
+   NEXT_PUBLIC_API_URL="http://localhost:3000"
+   ```
+5. Start the development server
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+Once the development server is running, you can access the application at `http://localhost:3000`. The available features include:
 
-To learn more about Next.js, take a look at the following resources:
+- **Dashboard**
+  - Manage product and category data.
+- **Main Page**
+  - View a list of all products.
+  - Search for products.
+- **My Recipes**
+  - View and manage a user's own products.
+  - Add new products.
+- **Authentication**
+  - Secure login and registration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you want to contribute to this project, please create a pull request or open an issue for further discussion.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

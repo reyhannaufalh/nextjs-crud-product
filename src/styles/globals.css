@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add your custom styles here */
+@layer components {
+  .btn {
+    @apply px-4 py-2 font-semibold rounded-md;
+  }
+}

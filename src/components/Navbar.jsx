@@ -4,8 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar({ setCreateModal }) {
-  const { user } = useAuth();
+  const { user, loading, logout } = useAuth(); // Tambahkan logout dari context
   const [dropdownUser, setDropdownUser] = useState(false);
+
+  // Menangani dropdown toggle
+  const toggleDropdown = () => {
+    setDropdownUser(!dropdownUser);
+  };
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -41,7 +46,7 @@ export default function Navbar({ setCreateModal }) {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            {!user ? (
+            {!loading && !user ? (
               <>
                 <Link
                   href="/login"
@@ -70,7 +75,7 @@ export default function Navbar({ setCreateModal }) {
                     <button
                       type="button"
                       className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                      onClick={() => setDropdownUser(!dropdownUser)}
+                      onClick={toggleDropdown}
                     >
                       <span className="sr-only">Open user menu</span>
                       <Image
@@ -121,13 +126,13 @@ export default function Navbar({ setCreateModal }) {
                           </Link>
                         </li>
                         <li>
-                          <Link
-                            href="/logout"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          <button
+                            onClick={logout} // Panggil fungsi logout
+                            className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                             role="menuitem"
                           >
                             Sign out
-                          </Link>
+                          </button>
                         </li>
                       </ul>
                     </div>
